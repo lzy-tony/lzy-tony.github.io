@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Steering Visual Generation in Unified Multimodal Models with Understanding Supervision">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Steering Visual Generation in Unified Multimodal Models with Understanding Supervision
+  </title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/img/COLE.jpg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<style>
+  .publication-title {
+    font-family: "textsc "
+  }
+  video {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+  .image_wrapper {
+    position: relative;
+    width: 226px;
+    height: 226px;
+  }
+
+  .image_container {
+    border-radius: 10px; /*设置图片的圆角，可以根据你的需求调整这个值*/
+    /*margin: 10px; !* 在图片的外部元素上设置间距 *!*/
+    overflow: hidden; /* 为了保持图片的圆角效果 */
+    position: relative;
+    width: 100%;
+
+    padding-bottom: 100%;
+  }
+
+  .image_container img {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 这会使图片保持原始比例，但仍然填充其容器 */
+    object-position: center; /* 新增加的代码，让图片居中 */
+  }
+
+  .caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    font-family: 'Comic Sans MS', 'Verdana', 'Tahoma', sans-serif;
+    text-align: center; /* 让文本在其容器中水平居中 */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .image_container:hover .caption {
+    opacity: 1;
+  }
+
+
+
+  .column.is-2.has-text-centered img.interpolation-image {
+
+    object-fit: cover;
+    border-radius: 10px;
+    transition: opacity 0.5s ease;
+    object-position: center; /* 新增加的代码，让图片居中 */
+  }
+
+  .column.is-2.has-text-centered:hover img.interpolation-image {
+    opacity: 0.5;
+  }
+
+  .column.is-2.has-text-centered .caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    font-family: 'Comic Sans MS', 'Verdana', 'Tahoma', sans-serif;
+    text-align: center; /* 让文本在其容器中水平居中 */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .column.is-2.has-text-centered:hover .caption {
+    opacity: 1;
+  }
+
+  .columns.is-centered img {
+    margin-bottom: 20px; /* 或者你想要的任何值 */
+  }
+
+
+  .section { margin: 3px; padding: 5px; }
+</style>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 ">Steering Visual Generation in Unified Multimodal Models with Understanding Supervision</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://lzy-tony.github.io/">Zeyu Liu</a><sup>1,2</sup>&nbsp&nbsp&nbsp</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=Yibz_asAAAAJ&hl=en">Zanlin Ni</a><sup>1</sup>&nbsp&nbsp&nbsp</span>
+            <span class="author-block">
+              <a>Yang Yue</a><sup>1</sup>&nbsp&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a>Cheng Da</a><sup>2</sup>&nbsp&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a>Huan Yang</a><sup>2*</sup>&nbsp&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a>Di Zhang</a><sup>2</sup>&nbsp&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a>Kun Gai</a><sup>2</sup>&nbsp&nbsp&nbsp
+            </span>
+            <span class="author-block">
+              <a href="https://www.gaohuang.net/">Gao Huang</a><sup>1†</sup>&nbsp&nbsp&nbsp
+            </span>
+            <br>
+            <span class="is-size-6 publication-authors">
+              <sup>*</sup><span>Project Lead&nbsp&nbsp&nbsp</span>
+            </span>
+            <span class="is-size-6 publication-authors">
+              <sup>†</sup><span>Corresponding Author&nbsp&nbsp&nbsp</span>
+            </span>
+
+
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Tsinghua University&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+            <span class="author-block"><sup>2</sup>Kolors Team, Kuaishou Technology&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+	      </span>
+
+  	      <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+	    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="./static/assets/uno/cmp_gen.svg" alt="Image Generation">
+        <img src="./static/assets/uno/cmp_edit.svg" alt="Image Editing">
+      </div>
+    </div>
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Unified multimodal models are envisioned to bridge the gap between understanding and generation. Yet, to achieve competitive performance, state-of-the-art models adopt largely decoupled understanding and generation components. This design, while effective for individual tasks, weakens the connection required for mutual enhancement, leaving the potential synergy empirically uncertain.
+          </p>
+          <p>
+            We propose to explicitly restore this synergy by introducing <b>Un</b>derstanding-<b>O</b>riented Post-Training (<b>UNO</b>), a lightweight framework that treats understanding not only as a distinct task, but also a supervisory signal to steer generative representations.
+            By incorporating objectives that encode semantic abstraction (captioning) and structural details (visual regression), we enable effective gradient flow from understanding to generation.
+            Extensive experiments on image generation and editing demonstrate that understanding can serve as an effective catalyst for generation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  <br>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Approach</h2>
+      <h3 class="title is-5">Enhanced Representational Capacity</h3>
+      <img src="./static/assets/uno/approach.svg" alt="capacity" style="width: 60%;">
+        <p>
+          <b>Conceptual illustration of training process and backward gradient flow</b>
+        </p>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <p align="left">
+          <b>(a) Generation Training</b>: Current generative training in unified models encode conditions using the understanding expert and transfers information uni-directionally via conditioning to the generative expert, where the outputs are optimized using low-level flow matching objectives. Generation experts receive gradients solely from generative targets, while signals from the understanding pathway remain isolated.
+        </p>
+        <br>
+        <p align="left">
+          <b>(b) Understanding-Oriented Post-Training</b>: Understanding-oriented post-training jointly supervises the sample with generation and understanding objectives. Specifically, the understanding expert conditions on the noised generative representations, and jointly conducts (i) language supervision through captioning and (ii) visual understanding supervision by using metaquery tokens to predict subsequent understanding tokens. This enables generation blocks to receive gradients from both pathways, enabling strong understanding supervision to directly shape generative representations.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Main Results</h2>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="./static/assets/uno/bench_gen.png" alt="pipeline" style="width: 100%;">
+        <p>
+          <b>Quantitative generation results</b>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="./static/assets/uno/bench_edit.png" alt="pipeline" style="width: 60%;">
+        <p>
+          <b>Quantitative editing results</b>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <br>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Gallery</h2>
+    </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <img src="./static/assets/uno/gallery_gen.svg" alt="Image Generation" style="width: 80%;">
+      <img src="./static/assets/uno/gallery_edit.svg" alt="Image Editing" style="width: 80%;">
+    </div>
+  </div>
+
+</section>
+<br>
+<br>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      TODO
+    </code></pre>
+  </div>
+</section>
+
+
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    <br>
+    Website adapted from the following <a href="https://nerfies.github.io/">template</a>.
+  </div>
+</section>
+
+</body>
+</html>
